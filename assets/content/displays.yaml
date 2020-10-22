@@ -1,0 +1,40 @@
+- id: screenA
+  name: 左侧屏
+  type: screen
+  desc: left screen
+  position: [0, 0]
+  size: [1920, 1080]
+  zIndex: 0
+  bg: lightpink
+  list: screenA.yaml
+
+- id: screenB
+  name: 中间屏
+  type: screen
+  desc: left screen
+  position: [1920, 0]
+  size: [1920, 1080]
+  zIndex: 0
+  bg: lightgreen 
+  list: screenB.yaml
+
+- id: screenC
+  name: 右侧屏
+  type: screen
+  desc: left screen
+  position: [3840, 0]
+  size: [1920, 1080]
+  zIndex: 0
+  bg: lightblue 
+  list: screenC.yaml
+
+- id: overlayScreen
+  name: 总屏
+  type: screen
+  desc: left screen
+  position: [0, 0]
+  size: [5760, 1080]
+  zIndex: 2
+  bg: orange   # rgba(103, 58, 183, 1)
+  opacity: 0
+  list: overlayScreen.yaml

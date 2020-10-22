@@ -1,0 +1,31 @@
+[
+    {
+      "type": "slide",
+      "name": "SlideB",
+      "path": "./assets/files/screenB/无纸化办公新时代/",
+      "content": [
+        "Slide1.png",
+        "Slide2.png",
+        "Slide3.png",
+        "Slide4.png",
+        "Slide5.png",
+        "Slide6.png",
+        "Slide7.png",
+        "Slide8.png",
+        "Slide9.png",
+        "Slide10.png",
+        "Slide11.png"
+      ]
+    },
+    {
+      "type": "photo",
+      "name": "无纸办公新时代B",
+      "path": "./assets/files/screenB/无纸办公新时代.png"
+    },
+    {
+      "type": "photo",
+      "name": "bg",
+      "path": "./assets/files/screenB/_prefix-01.png",
+      "bg": true
+    }
+  ]

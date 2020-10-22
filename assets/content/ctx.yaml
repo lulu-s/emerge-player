@@ -1,0 +1,25 @@
+类别:
+  title: 类别标题
+  title_en: 英文标题
+  case: 
+    - title: case标题
+      title_en: 英文标题
+      subtitle: 短篇简介
+      detail: 长篇简介
+      items: 
+        - type: deck 
+          name: 细节标题
+          content: 
+            - ./路径1
+            - ./路径1
+            - ./路径1
+            - ./路径1
+          arg:
+            position: [0, 0]
+            size: [0, 0]
+        - type: image
+          name: 细节标题
+          path: 路径
+        - type: video
+          name: 细节标题
+          path: 路径

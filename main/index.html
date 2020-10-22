@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: "Source Hans Sans CN", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        #app {
+            position: absolute;
+            display: block;
+            left: 0px;
+            top: 0;
+            /* background: black; */
+            height: 1080px;
+            width: 5760px;
+            overflow: hidden;
+            /* transform: scale(.3);
+            transform-origin: 0 0; */
+        }
+
+
+        .bg_select {
+            z-index: -1;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <viewport :state="state" :items="items" :local="local"></viewport>
+    </div>
+    <script src="./src/main.js"></script>
+</body>
+
+</html>
