@@ -1,6 +1,8 @@
 <template>
   <section class="viewer" :class="{ bg_select: item.bg != null }" >
-    <video ref="video" :loop="state.player_loop[parent.id]" autoplay class="video" :muted="state.player_muted[parent.id]" controls :src="item.path"></video>
+    <video ref="video" :loop="state.player_loop[parent.id]" autoplay class="video" :muted="state.player_muted[parent.id]" controls :src="item.path">
+      <track v-if="item.vtt" kind="subtitles" :src="item.vtt" srclang="zh" label="中文" default>
+    </video>
   </section>
 </template>
 
@@ -48,7 +50,26 @@ export default {
   // width: 100%;
   height: 100%;
 }
-video::-webkit-media-controls {
-  position: absolute;
+
+
+//设置字幕的样式
+video::cue{
+    background-color:transparent;
+    color:white;
+    font-size: 50px;
+    line-height: 50px;
+    position: absolute;
+    bottom: 0;
+    transition: all .4s ease;
 }
+
+// 设置单行字幕的样式 
+// video::cue(v[voice=aa]){
+//     color:green;
+// }
+
+// video::cue(v[voice=bb]){
+//     color:rgb(0, 26, 128);
+// }
+
 </style>

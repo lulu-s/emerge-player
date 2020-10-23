@@ -7,6 +7,7 @@
   time: 0
   startTime: '0:00'
   endTime: '1:12'
+  vtt: ./assets/files/overlayScreen/test.vtt
   select: false
 
 - type: slide 

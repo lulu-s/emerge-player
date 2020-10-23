@@ -15,6 +15,7 @@ cp -R ../../data/无纸化办公新时代 ./
 cp ../../data/无纸办公新时代.png ./
 cp ../../data/_prefix-01.png ./
 cp ../../data/test.mp4 ./
+cp ../../data/test.vtt ./
 cd ..
 
 cd screenA
