@@ -50,26 +50,68 @@ fetch("assets/content/displays.yaml")
                 .then(data => data.text())
                 .then(data => YAML.parse(data))
                 .then(data => {
-                    array[index]["content"] = {...data};
+                    array[index]["content"] = [ ...data ];
                 })
         }));
         console.log("get yaml end");
         init(data)
     });
 
-
 var state = ao.glueObject({
     width: 5760,
     height: 1080,
     scale: 0.3,
-    selectId: "",
-    focusId: "",
-    slideId: 0,
-    selectName: "",
+    focus: '',
+    selectId: {
+        overlayScreen: null,
+        screenA: null,
+        screenB: null,
+        screenC: null
+    }, // ""
+    selectName: {
+        overlayScreen: null,
+        screenA: null,
+        screenB: null,
+        screenC: null
+    }, // "",
+    player_slideId: {
+        overlayScreen: 0,
+        screenA: 0,
+        screenB: 0,
+        screenC: 0
+    }, // 0
+    player_play: {
+        overlayScreen: true,
+        screenA: true,
+        screenB: true,
+        screenC: true
+    }, //  true,
+    player_muted: {
+        overlayScreen: false,
+        screenA: false,
+        screenB: false,
+        screenC: false
+    }, //  true,
+    player_loop: {
+        overlayScreen: false,
+        screenA: false,
+        screenB: false,
+        screenC: false
+    }, //  true,
+    player_time: {
+        overlayScreen: 0,
+        screenA: 0,
+        screenB: 0,
+        screenC: 0
+    }, //  true,
+    
     lastTime: Date.now(),
     add_time() {
         this.lastTime = new Date()
-    }
+    },
+
+
+    load: false
 })
 window.state = state;
 

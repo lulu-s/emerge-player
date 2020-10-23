@@ -13,14 +13,24 @@
     - Slide9.png
     - Slide10.png
     - Slide11.png
-    
-- type: viewer
-  name: iOCR财会版介绍视频C
-  path: ./assets/files/screenC/iOCR财会版介绍视频.mp4
-  # bg: true
+  page: 0
+  select: false
 
 - type: viewer
+  name: iOCR财会版介绍视频C
+  path: ./assets/files/screenC/test.mp4
+  muted: false
+  play: true
+  loop: false
+  time: 0
+  startTime: '0:00'
+  endTime: '1:12'
+  select: false
+
+- type: photo
   name: bg
-  path: ./assets/files/screenC/iOCR财会版介绍视频.mp4
+  path: ./assets/files/screenC/bg.png
   bg: true
+
+
 

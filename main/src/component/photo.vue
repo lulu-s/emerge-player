@@ -12,7 +12,7 @@
 <script>
 export default {
   name: "photo",
-  props: ["item", "state"],
+  props: ["item", "state", "parent"],
   data() {
     return {};
   },

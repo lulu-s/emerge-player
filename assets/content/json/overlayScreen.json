@@ -1,36 +1,46 @@
 [
-    {
-      "type": "viewer",
-      "name": "iOCR财会版介绍视频O",
-      "path": "./assets/files/overlayScreen/iOCR财会版介绍视频.mp4"
-    },
-    {
-      "type": "slide",
-      "name": "SlideO",
-      "path": "./assets/files/overlayScreen/无纸化办公新时代/",
-      "content": [
-        "Slide1.png",
-        "Slide2.png",
-        "Slide3.png",
-        "Slide4.png",
-        "Slide5.png",
-        "Slide6.png",
-        "Slide7.png",
-        "Slide8.png",
-        "Slide9.png",
-        "Slide10.png",
-        "Slide11.png"
-      ]
-    },
-    {
-      "type": "photo",
-      "name": "无纸办公新时代O",
-      "path": "./assets/files/overlayScreen/无纸办公新时代.png"
-    },
-    {
-      "type": "photo",
-      "name": "bg",
-      "path": "./assets/files/overlayScreen/_prefix-01.png",
-      "bg": true
-    }
-  ]
+  {
+    "type": "viewer",
+    "name": "iOCR财会版介绍视频O",
+    "path": "./assets/files/overlayScreen/iOCR财会版介绍视频.mp4",
+    "muted": false,
+    "play": true,
+    "loop": false,
+    "time": 0,
+    "startTime": "0:00",
+    "endTime": "1:12",
+    "select": false
+  },
+  {
+    "type": "slide",
+    "name": "SlideO",
+    "path": "./assets/files/overlayScreen/无纸化办公新时代/",
+    "content": [
+      "Slide1.png",
+      "Slide2.png",
+      "Slide3.png",
+      "Slide4.png",
+      "Slide5.png",
+      "Slide6.png",
+      "Slide7.png",
+      "Slide8.png",
+      "Slide9.png",
+      "Slide10.png",
+      "Slide11.png"
+    ],
+    "page": 0,
+    "select": false
+  },
+  {
+    "type": "photo",
+    "name": "无纸办公新时代O",
+    "path": "./assets/files/overlayScreen/无纸办公新时代.png",
+    "select": false
+  },
+  {
+    "type": "photo",
+    "name": "bg",
+    "path": "./assets/files/overlayScreen/_prefix-01.png",
+    "bg": true
+  }
+]

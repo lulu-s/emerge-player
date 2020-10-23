@@ -13,15 +13,35 @@
     - Slide9.png
     - Slide10.png
     - Slide11.png
-    
+  page: 0
+  select: false
+
+
+  
 - type: photo
   name: 无纸办公新时代B
   path: ./assets/files/screenB/无纸办公新时代.png
-  # bg: true
+  select: false
+
+- type: photo
+  name: 无纸办公新时代1B
+  path: ./assets/files/screenB/无纸办公新时代.png
+  select: false
+  
+- type: photo
+  name: 无纸办公新时代2B
+  path: ./assets/files/screenB/无纸办公新时代.png
+  select: false
+
+- type: photo
+  name: 无纸办公新时代3B
+  path: ./assets/files/screenB/无纸办公新时代.png
+  select: false
+
 
 - type: photo
   name: bg
-  path: ./assets/files/screenB/_prefix-01.png
+  path: ./assets/files/screenB/bg.png
   bg: true
 
 

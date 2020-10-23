@@ -1,18 +1,26 @@
 [
-    {
-      "type": "photo",
-      "name": "无纸办公新时代A",
-      "path": "../../assets/files/screenA/无纸办公新时代.png"
-    },
-    {
-      "type": "photo",
-      "name": "bg",
-      "path": "../../assets/files/screenA/_prefix-02.png",
-      "bg": true
-    },
-    {
-      "type": "viewer",
-      "name": "iOCR财会版介绍视频A",
-      "path": "../../assets/files/screenA/iOCR财会版介绍视频.mp4"
-    }
-  ]
+  {
+    "type": "photo",
+    "name": "无纸办公新时代A",
+    "path": "../../assets/files/screenA/无纸办公新时代.png",
+    "select": false
+  },
+  {
+    "type": "photo",
+    "name": "bg",
+    "path": "../../assets/files/screenA/bg.png",
+    "bg": true
+  },
+  {
+    "type": "viewer",
+    "name": "iOCR财会版介绍视频A",
+    "path": "../../assets/files/screenA/iOCR财会版介绍视频.mp4",
+    "muted": false,
+    "play": true,
+    "loop": false,
+    "time": 0,
+    "startTime": "0:00",
+    "endTime": "1:12",
+    "select": false
+  }
+]

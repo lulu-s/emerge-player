@@ -14,11 +14,12 @@ function createWindow() {
         y: 0,
         width: 5760,
         height: 1080,
-        enableLargerThanScreen: true
+        enableLargerThanScreen: true,
+        // fullscreen: true
     })
 
     // and load the index.html of the app.
-    win.loadURL('http://localhost:1234/main.html')
+    win.loadURL('http://localhost:1234/index.html')
     win.setSize(5760, 1080);
     //win.openDevTools();
 }

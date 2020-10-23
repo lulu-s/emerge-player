@@ -1,7 +1,7 @@
 <template>
   <div
     class="screen"
-    :class="{ select: state.selectId == item.id }"
+    :class="{ select: state.selectId[item.id] }"
     :style="calc_style"
   >
     <!-- <h1 class="test">{{ item.id }}</h1> -->
@@ -12,13 +12,14 @@
         :is="ct.type"
         :key="ct.name"
         :item="ct"
+        :parent="item"
         :state="state"
-        v-if="(state.selectId == item.id && ct.name == state.selectName) || ct.bg != null"
+        v-if="state.selectName[item.id] == ct.name || ct.bg != null"
       ></component>
     </div>
     <div
       class="no-focus"
-      :style="{ opacity: state.focusId && state.focusId != item.id ? 1 : 0 }"
+      :style="{ opacity:  state.focus  &&  state.focus !=  item.id  ? 1 : 0 }"
     ></div>
   </div>
 </template>
@@ -68,7 +69,7 @@ export default {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
   transition: all 0.3s cubic-bezier(0.03, 0.59, 0.13, 0.33);
   pointer-events: none;
 }

@@ -1,7 +1,8 @@
 <template>
-  <section class="slide">
+  <section class="slide" ref="slideimg">
     {{ item.name }}
-    <img class="img" :src="item.path + item.content[state.slideId]" alt="" />
+    <!-- <img class="img" :src="item.path + item.content[state.slideId]" alt="" /> -->
+    <img  class="img" :src="item.path + item.content[state.player_slideId[parent.id]]" alt="" />
     <div class="intro">
       <b>{{item.name}} ({{state.slideId + 1}} / {{item.content.length}})</b>
     </div>
@@ -11,14 +12,21 @@
 <script>
 export default {
   name: "slide",
-  props: ["item", "state"],
+  props: ["item", "state", "parent"],
   data() {
     return {};
   },
   components: {},
-  watch: {},
+  watch: {
+
+  },
   mounted() {},
   methods: {},
+  updated(){
+     if(!this.$refs.slideimg){
+        this.state.player_slideId[parent.id] = 0;
+      }
+  }
 };
 </script>
 
