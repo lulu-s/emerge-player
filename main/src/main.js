@@ -14,36 +14,42 @@ for(let key in comps){
 
 window.vue = vue;
 
-function hybridObserve(x) {
-    if (x.__hobserved) return x;
-    Object.defineProperty(x, "__hobserved", {
-        enumerable: false,
-        writable: false,
-        value: 1
-    });
-    var mount = vue.reactive({});
-    for (var i in x) {
-        ((i) => {
-            mount[i] = x[i];
-            if (typeof mount[i] == 'object') {
-                hybridObserve(mount[i]);
-            }
-            Object.defineProperty(x, i,
-                {
-                    get() { return mount[i] },
-                    set(v) {
-                        mount[i] = v
-                    }
-                }
-            );
-        })(i);
-    }
-    return x;
-}
+var state = ao.glueObject({
+    width: 5760,
+    height: 1080,
+    scale: 0.3,
+    focus: '',
+    selectId: { }, // ""
+    selectName: { }, // "",
+    player_slideId: { }, // 0
+    player_play: {  }, //  true,
+    player_muted: { }, //  true,
+    player_loop: { }, //  true,
+    player_time: { }, //  true,
+    lastTime: Date.now(),
+    add_time() {
+        this.lastTime = new Date()
+    },
+    load: false
+})
+window.state = state;
 
 fetch("assets/content/displays.yaml")
     .then(data => data.text())
-    .then(data => YAML.parse(data))
+    .then(data => {
+        let d =  YAML.parse(data);
+        d.forEach(ele => {
+            state.selectId[ele.id] = null;
+            state.selectName[ele.id] = null;
+            state.player_slideId[ele.id] = 0;
+            state.player_play[ele.id] = true;
+            state.player_muted[ele.id] = false;
+            state.player_loop[ele.id] = false;
+            state.player_time[ele.id] = 0;
+        });
+        
+        return d
+    })
     .then(async data => {
         await Promise.all(data.map((e, index, array) => {
             return fetch("assets/content/" + e.list)
@@ -57,83 +63,14 @@ fetch("assets/content/displays.yaml")
         init(data)
     });
 
-var state = ao.glueObject({
-    width: 5760,
-    height: 1080,
-    scale: 0.3,
-    focus: '',
-    selectId: {
-        overlayScreen: null,
-        screenA: null,
-        screenB: null,
-        screenC: null
-    }, // ""
-    selectName: {
-        overlayScreen: null,
-        screenA: null,
-        screenB: null,
-        screenC: null
-    }, // "",
-    player_slideId: {
-        overlayScreen: 0,
-        screenA: 0,
-        screenB: 0,
-        screenC: 0
-    }, // 0
-    player_play: {
-        overlayScreen: true,
-        screenA: true,
-        screenB: true,
-        screenC: true
-    }, //  true,
-    player_muted: {
-        overlayScreen: false,
-        screenA: false,
-        screenB: false,
-        screenC: false
-    }, //  true,
-    player_loop: {
-        overlayScreen: false,
-        screenA: false,
-        screenB: false,
-        screenC: false
-    }, //  true,
-    player_time: {
-        overlayScreen: 0,
-        screenA: 0,
-        screenB: 0,
-        screenC: 0
-    }, //  true,
-    
-    lastTime: Date.now(),
-    add_time() {
-        this.lastTime = new Date()
-    },
-
-
-    load: false
-})
-window.state = state;
-
 var local = vue.reactive({})
 window.local = local;
 
 function init(items) {
-    
     new Vue({
         el: "#app",
         data: { local, state, items }
     })
-
-    // 开启 loop
-    ao.looperStart();
-    ao.loop(loop)
-}
-
-function loop(){
-    if (Date.now() - state.lastTime > 300000 && state.mode > -1) { // 5分钟 300000
-        console.log("ending time");
-    }
 }
 
 // 连接远程服务器，获取在线数据

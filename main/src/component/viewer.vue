@@ -24,7 +24,6 @@ export default {
     },
     "state.player_time"(){
       if(this.$refs.video){
-        console.log(this.$refs.video, this.state.player_time[this.parent.id], state.player_time);
         this.$refs.video.currentTime = this.$refs.video.duration * this.state.player_time[this.parent.id]
       } 
     }
