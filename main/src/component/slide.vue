@@ -2,9 +2,18 @@
   <section class="slide" ref="slideimg">
     {{ item.name }}
     <!-- <img class="img" :src="item.path + item.content[state.slideId]" alt="" /> -->
-    <img  class="img" :src="item.path + item.content[state.player_slideId[parent.id]]" alt="" />
-    <div class="intro">
-      <b>{{item.name}} ({{state.slideId + 1}} / {{item.content.length}})</b>
+    <div class="fade">
+      <img
+        class="img"
+        :src="item.path + item.content[state.player_slideId[parent.id]]"
+        alt=""
+      />
+      <div class="intro fade">
+        <b
+          >{{ item.name }} ({{ state.slideId + 1 }} /
+          {{ item.content.length }})</b
+        >
+      </div>
     </div>
   </section>
 </template>
@@ -17,16 +26,17 @@ export default {
     return {};
   },
   components: {},
-  watch: {
-
+  watch: {},
+  mounted() {
+    console.log("mounted die");
   },
-  mounted() {},
   methods: {},
-  updated(){
-     if(!this.$refs.slideimg){
-        this.state.player_slideId[parent.id] = 0;
-      }
-  }
+  updated() {
+    if (!this.$refs.slideimg) {
+      this.state.player_slideId[parent.id] = 0;
+    }
+    console.log("updated die");
+  },
 };
 </script>
 
@@ -52,11 +62,10 @@ export default {
 }
 
 .intro b {
-    font-size: 20px;
-    padding: 5px 50px;
-    border: 3px solid white;
-    border-radius: 1000px;
-    display: inline-block;
+  font-size: 20px;
+  padding: 5px 50px;
+  border: 3px solid white;
+  border-radius: 1000px;
+  display: inline-block;
 }
-
 </style>

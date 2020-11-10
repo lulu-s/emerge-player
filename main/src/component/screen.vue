@@ -61,7 +61,7 @@ export default {
   opacity: 1 !important;
   transition: all 0.4s ease;
   pointer-events: all;
-  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.8); // box-shadow: 4px 3px 16px 0px rgba(51, 51, 51, 0.4);
+  // box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.8); // box-shadow: 4px 3px 16px 0px rgba(51, 51, 51, 0.4);
 }
 .no-focus {
   position: absolute;

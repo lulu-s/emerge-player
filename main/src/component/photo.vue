@@ -1,7 +1,8 @@
 <template>
   <section class="photo" :class="{ bg_select: item.bg != null }">
     <img
-      class="image"
+      class="image  "
+      :class="{ fade: !item.bg }"
       :style="{ width: item.bg != null ? '100%' : 'auto' }"
       :src="item.path"
       alt=""

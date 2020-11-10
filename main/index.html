@@ -32,6 +32,21 @@
             z-index: -1;
             width: 100%;
         }
+
+        .fade {
+            opacity: 0;
+            animation: fade .3s cubic-bezier(0.17, 0.74, 0.27, 0.85) forwards;
+        }
+        @keyframes fade {
+            0% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 

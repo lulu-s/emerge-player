@@ -1,8 +1,36 @@
 import * as ao from "../../libao"
-import { Vue, vue } from "../../libao";
+import { glueValue, Vue, vue } from "../../libao";
 import * as YAML from "yaml"
 import * as comps from "./component/*.vue";
 // import viewer from "./vue/viewer.vue";
+
+
+function hybridObserve(x) {
+    if(x.__hobserved) return x;
+    Object.defineProperty(x, "__hobserved", {
+        enumerable: false,
+        writable: false,
+        value: 1
+    });
+    var mount = vue.reactive({});
+    for (var i in x) {
+        ((i) => {
+            mount[i] = x[i];
+            if(typeof mount[i] == 'object'){
+                hybridObserve(mount[i]);
+            }
+            Object.defineProperty(x, i,
+                {
+                    get() { return mount[i] },
+                    set(v) { 
+                        mount[i] = v
+                    }
+                }
+            );
+        })(i);
+    }
+    return x;
+}
 
 
 // 注册组件
@@ -26,6 +54,7 @@ var state = ao.glueObject({
     player_muted: { }, //  true,
     player_loop: { }, //  true,
     player_time: { }, //  true,
+    current_time: glueValue({}),
     lastTime: Date.now(),
     add_time() {
         this.lastTime = new Date()
@@ -46,8 +75,8 @@ fetch("assets/content/displays.yaml")
             state.player_muted[ele.id] = false;
             state.player_loop[ele.id] = false;
             state.player_time[ele.id] = 0;
+            state.current_time[ele.id] = 0;
         });
-        
         return d
     })
     .then(async data => {
@@ -69,7 +98,11 @@ window.local = local;
 function init(items) {
     new Vue({
         el: "#app",
-        data: { local, state, items }
+        data: { local, state, items },
+        mounted(){
+            ao.looperStart();
+            ao.looperShowFPS();
+        }
     })
 }
 
