@@ -1,5 +1,10 @@
 # emerge-player
 
+## 生成数据
+```
+    sh create.sh
+```
+
 ## demo运行
 
 ```
