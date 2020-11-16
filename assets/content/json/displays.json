@@ -64,7 +64,7 @@
         1080
       ],
       "zIndex": 2,
-      "bg": "orange",
+      "bg": "black",
       "opacity": 0,
       "list": "overlayScreen.json"
     }

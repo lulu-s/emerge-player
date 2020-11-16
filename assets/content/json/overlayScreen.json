@@ -36,11 +36,5 @@
     "name": "无纸办公新时代O",
     "path": "./assets/files/overlayScreen/无纸办公新时代.png",
     "select": false
-  },
-  {
-    "type": "photo",
-    "name": "bg",
-    "path": "./assets/files/overlayScreen/_prefix-01.png",
-    "bg": true
   }
 ]

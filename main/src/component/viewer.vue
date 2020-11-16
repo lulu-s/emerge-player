@@ -6,7 +6,6 @@
       autoplay
       class="video fade"
       :muted="state.player_muted[parent.id]"
-      controls
       :src="item.path"
     >
       <track
