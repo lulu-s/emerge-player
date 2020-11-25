@@ -5,7 +5,7 @@
     <div class="fade">
       <img
         class="img"
-        :src="item.path + item.content[state.player_slideId[parent.id]]"
+        :src="state.host + item.path + item.content[state.player_slideId[parent.id]]"
         alt=""
       />
       <div class="intro fade">

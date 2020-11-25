@@ -45,7 +45,8 @@ window.vue = vue;
 var state = ao.glueObject({
     width: 5760,
     height: 1080,
-    scale: 0.3,
+    scale: .3,
+    host: 'http://localhost:8080/',
     focus: '',
     selectId: { }, // ""
     selectName: { }, // "",
@@ -63,7 +64,7 @@ var state = ao.glueObject({
 })
 window.state = state;
 
-fetch("assets/content/displays.yaml")
+fetch(state.host + "content/displays.yaml")
     .then(data => data.text())
     .then(data => {
         let d =  YAML.parse(data);
@@ -81,7 +82,7 @@ fetch("assets/content/displays.yaml")
     })
     .then(async data => {
         await Promise.all(data.map((e, index, array) => {
-            return fetch("assets/content/" + e.list)
+            return fetch(state.host + "content/" + e.list)
                 .then(data => data.text())
                 .then(data => YAML.parse(data))
                 .then(data => {
@@ -101,7 +102,7 @@ function init(items) {
         data: { local, state, items },
         mounted(){
             ao.looperStart();
-            ao.looperShowFPS();
+            // ao.looperShowFPS();
         }
     })
 }

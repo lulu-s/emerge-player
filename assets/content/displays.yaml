@@ -1,31 +1,31 @@
 - id: screenA
-  name: 左侧屏
+  name: 左/高精地图
   type: screen
   desc: left screen
   position: [0, 0]
   size: [1920, 1080]
   zIndex: 0
-  bg: lightpink
+  bg: black
   list: screenA.yaml
 
 - id: screenB
-  name: 中间屏
+  name: 中/自动驾驶
   type: screen
   desc: left screen
   position: [1920, 0]
   size: [1920, 1080]
   zIndex: 0
-  bg: lightgreen 
+  bg: black 
   list: screenB.yaml
 
 - id: screenC
-  name: 右侧屏
+  name: 右/ADAS
   type: screen
   desc: left screen
   position: [3840, 0]
   size: [1920, 1080]
   zIndex: 0
-  bg: lightblue 
+  bg: black 
   list: screenC.yaml
 
 - id: overlayScreen

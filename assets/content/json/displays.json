@@ -1,71 +1,71 @@
 [
-    {
-      "id": "screenA",
-      "name": "左侧屏",
-      "type": "screen",
-      "desc": "left screen",
-      "position": [
-        0,
-        0
-      ],
-      "size": [
-        1920,
-        1080
-      ],
-      "zIndex": 0,
-      "bg": "lightpink",
-      "list": "screenA.json"
-    },
-    {
-      "id": "screenB",
-      "name": "中间屏",
-      "type": "screen",
-      "desc": "left screen",
-      "position": [
-        1920,
-        0
-      ],
-      "size": [
-        1920,
-        1080
-      ],
-      "zIndex": 0,
-      "bg": "lightgreen",
-      "list": "screenB.json"
-    },
-    {
-      "id": "screenC",
-      "name": "右侧屏",
-      "type": "screen",
-      "desc": "left screen",
-      "position": [
-        3840,
-        0
-      ],
-      "size": [
-        1920,
-        1080
-      ],
-      "zIndex": 0,
-      "bg": "lightblue",
-      "list": "screenC.json"
-    },
-    {
-      "id": "overlayScreen",
-      "name": "总屏",
-      "type": "screen",
-      "desc": "left screen",
-      "position": [
-        0,
-        0
-      ],
-      "size": [
-        5760,
-        1080
-      ],
-      "zIndex": 2,
-      "bg": "black",
-      "opacity": 0,
-      "list": "overlayScreen.json"
-    }
-  ]
+  {
+    "id": "screenA",
+    "name": "左/高精地图",
+    "type": "screen",
+    "desc": "left screen",
+    "position": [
+      0,
+      0
+    ],
+    "size": [
+      1920,
+      1080
+    ],
+    "zIndex": 0,
+    "bg": "black",
+    "list": "screenA.json"
+  },
+  {
+    "id": "screenB",
+    "name": "中/自动驾驶",
+    "type": "screen",
+    "desc": "left screen",
+    "position": [
+      1920,
+      0
+    ],
+    "size": [
+      1920,
+      1080
+    ],
+    "zIndex": 0,
+    "bg": "black",
+    "list": "screenB.json"
+  },
+  {
+    "id": "screenC",
+    "name": "右/ADAS",
+    "type": "screen",
+    "desc": "left screen",
+    "position": [
+      3840,
+      0
+    ],
+    "size": [
+      1920,
+      1080
+    ],
+    "zIndex": 0,
+    "bg": "black",
+    "list": "screenC.json"
+  },
+  {
+    "id": "overlayScreen",
+    "name": "总屏",
+    "type": "screen",
+    "desc": "left screen",
+    "position": [
+      0,
+      0
+    ],
+    "size": [
+      5760,
+      1080
+    ],
+    "zIndex": 2,
+    "bg": "black",
+    "opacity": 0,
+    "list": "overlayScreen.json"
+  }
+]

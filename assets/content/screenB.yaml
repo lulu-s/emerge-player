@@ -1,47 +1,6 @@
-- type: slide 
-  name: SlideB
-  path: ./assets/files/screenB/无纸化办公新时代/
-  content: 
-    - Slide1.png
-    - Slide2.png
-    - Slide3.png
-    - Slide4.png
-    - Slide5.png
-    - Slide6.png
-    - Slide7.png
-    - Slide8.png
-    - Slide9.png
-    - Slide10.png
-    - Slide11.png
-  page: 0
-  select: false
 
-
-  
-- type: photo
-  name: 无纸办公新时代B
-  path: ./assets/files/screenB/无纸办公新时代.png
-  select: false
-
-- type: photo
-  name: 无纸办公新时代1B
-  path: ./assets/files/screenB/无纸办公新时代.png
-  select: false
-  
-- type: photo
-  name: 无纸办公新时代2B
-  path: ./assets/files/screenB/无纸办公新时代.png
-  select: false
-
-- type: photo
-  name: 无纸办公新时代3B
-  path: ./assets/files/screenB/无纸办公新时代.png
-  select: false
-
-
-- type: photo
-  name: bg
-  path: ./assets/files/screenB/bg.png
-  bg: true
-
-
+- type: viewer
+  name: test video B
+  path: files/screenB/test.mp4
+  startTime: '0:00'
+  endTime: '0:52'

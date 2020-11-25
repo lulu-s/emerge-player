@@ -1,26 +1,51 @@
 [
   {
-    "type": "photo",
-    "name": "无纸办公新时代A",
-    "path": "../../assets/files/screenA/无纸办公新时代.png",
-    "select": false
+    "type": "viewer",
+    "name": "test video A",
+    "path": "files/screenA/test.mp4",
+    "startTime": "0:00",
+    "endTime": "0:52"
   },
   {
-    "type": "photo",
-    "name": "bg",
-    "path": "../../assets/files/screenA/bg.png",
+    "type": "message",
+    "name": "欢迎语",
+    "size": 80,
+    "position": [
+      230,
+      330
+    ],
+    "msg": "欢迎领导莅临参观!",
     "bg": true
   },
   {
-    "type": "viewer",
-    "name": "iOCR财会版介绍视频A",
-    "path": "../../assets/files/screenA/iOCR财会版介绍视频.mp4",
-    "muted": false,
-    "play": true,
-    "loop": false,
-    "time": 0,
-    "startTime": "0:00",
-    "endTime": "1:12",
-    "select": false
+    "type": "message",
+    "name": "欢迎语-时间",
+    "size": 40,
+    "position": [
+      300,
+      700
+    ],
+    "msg": "2020-12-12",
+    "bg": true
+  },
+  {
+    "type": "photo",
+    "name": "test photo",
+    "position": [
+      0,
+      0
+    ],
+    "path": "files/screenA/_prefix-01.png",
+    "bg": true
+  },
+  {
+    "type": "photo",
+    "name": "test logo photo",
+    "position": [
+      1000,
+      100
+    ],
+    "path": "files/screenA/hz-logo@2x.png",
+    "bg": true
   }
 ]

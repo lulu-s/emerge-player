@@ -1,20 +1,16 @@
 [
   {
     "type": "viewer",
-    "name": "iOCR财会版介绍视频O",
-    "path": "./assets/files/overlayScreen/iOCR财会版介绍视频.mp4",
-    "muted": false,
-    "play": true,
-    "loop": false,
-    "time": 0,
+    "name": "test",
+    "path": "files/overlayScreen/test.mp4",
     "startTime": "0:00",
-    "endTime": "1:12",
-    "select": false
+    "endTime": "0:52",
+    "vtt": "files/overlayScreen/test.vtt"
   },
   {
     "type": "slide",
     "name": "SlideO",
-    "path": "./assets/files/overlayScreen/无纸化办公新时代/",
+    "path": "files/overlayScreen/无纸化办公新时代/",
     "content": [
       "Slide1.png",
       "Slide2.png",
@@ -27,14 +23,21 @@
       "Slide9.png",
       "Slide10.png",
       "Slide11.png"
-    ],
-    "page": 0,
-    "select": false
+    ]
   },
   {
     "type": "photo",
     "name": "无纸办公新时代O",
-    "path": "./assets/files/overlayScreen/无纸办公新时代.png",
-    "select": false
+    "position": [
+      1920,
+      0
+    ],
+    "path": "./assets/files/overlayScreen/无纸办公新时代.png"
+  },
+  {
+    "type": "message",
+    "name": "欢迎语",
+    "size": 150,
+    "msg": "欢迎领导莅临参观！"
   }
 ]

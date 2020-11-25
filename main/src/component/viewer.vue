@@ -6,7 +6,8 @@
       autoplay
       class="video fade"
       :muted="state.player_muted[parent.id]"
-      :src="item.path"
+      :src="state.host + item.path"
+      :style="calc_style"
     >
       <track
         v-if="item.vtt"
@@ -29,6 +30,13 @@ export default {
     return {
       prev_time: -1,
     };
+  },
+  computed: {
+    calc_style() {
+      return {
+        'z-index': this.item.bg ? 0 : 1
+      };
+    },
   },
   components: {},
   watch: {
@@ -62,6 +70,8 @@ export default {
         tem[this.parent.id] = this.$refs.video.currentTime / this.$refs.video.duration ;
         this.state.current_time =  tem;
       }
+
+      // console.log(this.state.player_muted[this.parent.id]);
     });
   },
   methods: {},

@@ -34,8 +34,8 @@ export default {
         width: this.item.size[0] + "px",
         height: this.item.size[1] + "px",
         position: "absolute",
-        left: this.item.position[0] + "px",
-        top: this.item.position[1] + "px",
+        left: this.item.position[0] ? this.item.position[0] + "px" : 0,
+        top: this.item.position[1] ? this.item.position[1] + "px" : 0,
         "z-index": this.item.zIndex,
         background: this.item.bg,
         opacity: this.item.opacity,
@@ -72,6 +72,7 @@ export default {
   background: rgba(0, 0, 0, 0.8);
   transition: all 0.3s cubic-bezier(0.03, 0.59, 0.13, 0.33);
   pointer-events: none;
+  z-index: 1000;
 }
 .component {
   position: absolute;
