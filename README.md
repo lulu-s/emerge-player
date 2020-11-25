@@ -29,8 +29,9 @@
 
     (新建终端4) cd electron
     (新建终端5) electron electronRunner.js
-
 ```
+
+* 浏览器输入 `http://localhost:1234` and `http://localhost:9999/glue/ipad.html`
 
 
 ## 组件
