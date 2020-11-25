@@ -24,7 +24,7 @@
     (新建终端1) cd main
     (新建终端1) parcel --no-hmr index.html
 
-    (新建终端2) cd srvao-ipad
+    (新建终端2) cd srvao_ipad
     (新建终端2) node main.js
 
     (新建终端4) cd electron

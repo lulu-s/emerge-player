@@ -1,2 +1,2 @@
-cd srvao-ipad
+cd srvao_ipad
 node main.js
