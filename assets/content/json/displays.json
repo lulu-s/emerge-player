@@ -14,7 +14,7 @@
     ],
     "zIndex": 0,
     "bg": "black",
-    "list": "screenA.json"
+    "list": "screenA.yaml"
   },
   {
     "id": "screenB",
@@ -31,7 +31,7 @@
     ],
     "zIndex": 0,
     "bg": "black",
-    "list": "screenB.json"
+    "list": "screenB.yaml"
   },
   {
     "id": "screenC",
@@ -48,7 +48,7 @@
     ],
     "zIndex": 0,
     "bg": "black",
-    "list": "screenC.json"
+    "list": "screenC.yaml"
   },
   {
     "id": "overlayScreen",
@@ -66,6 +66,6 @@
     "zIndex": 2,
     "bg": "black",
     "opacity": 0,
-    "list": "overlayScreen.json"
+    "list": "overlayScreen.yaml"
   }
 ]

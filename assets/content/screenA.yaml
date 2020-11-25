@@ -17,7 +17,7 @@
   name: 欢迎语-时间
   size: 40
   position: [300, 700]
-  msg: 2020-12-12
+  msg: '2020-12-12'
   bg: true
 
 - type: photo

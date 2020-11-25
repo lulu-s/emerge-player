@@ -23,7 +23,8 @@
       "Slide9.png",
       "Slide10.png",
       "Slide11.png"
-    ]
+    ],
+    "page": 0
   },
   {
     "type": "photo",
@@ -32,11 +33,15 @@
       1920,
       0
     ],
-    "path": "./assets/files/overlayScreen/无纸办公新时代.png"
+    "path": "files/overlayScreen/无纸办公新时代.png"
   },
   {
     "type": "message",
     "name": "欢迎语",
+    "position": [
+      2000,
+      500
+    ],
     "size": 150,
     "msg": "欢迎领导莅临参观！"
   }

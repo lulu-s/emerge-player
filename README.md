@@ -11,8 +11,10 @@
     * mac： 将快捷方式libao删除，链接🔗 `ln -s ./libao`
 
 ## 生成数据
+* 根据content内的yaml，生成对应的json
 ```
-    sh create.sh
+    cd assets/
+    node data.js
 ```
 
 ## demo运行
