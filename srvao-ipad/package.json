@@ -1,0 +1,24 @@
+{
+  "name": "srvao",
+  "version": "1.0.0",
+  "description": "microservice array for libao - progressive dev-op -> interactive installations",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luan007/srvao.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luan007/srvao/issues"
+  },
+  "homepage": "https://github.com/luan007/srvao#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}

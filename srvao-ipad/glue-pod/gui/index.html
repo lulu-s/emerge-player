@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        * {
+            font-family: sans-serif;
+            font-weight: lighter;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="./socket-io.client.js"></script>
+    <script src="./vue.min.js"></script>
+
+    <div id='main'>
+        SRV/ GLUE-POD
+        <br>
+        <br>
+        <div v-for='i, j in def'>
+            {{i.meta.name || j}}
+            <b v-if="i.type == 'value'">=> {{i.value}}</b>
+            <button v-if="i.type == 'action'" v-on:click="cmd(i)">{{j}}</button>
+        </div>
+    </div>
+
+    <script src="./client.js"></script>
+</body>
+
+</html>

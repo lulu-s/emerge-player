@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./socket-io.client.js"></script>
+    <script src="./vue.min.js"></script>
+    <script src="./vue-lazyload.js"></script>
+    <title>2X6 产品介绍 - 控制器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        body,
+        html {
+            background: #111;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #main {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .control {
+            /* text-align: center; */
+            /* width: 100%; */
+            /* height: 80px; */
+            /* background: #ccc; */
+            /* border: 1px solid #ccc;
+            margin: 10px;
+            box-sizing: border-box; */
+
+            text-align: center;
+            background: rgb(146 239 154 / 50%);
+            padding: 10px;
+            height: 50px;
+        }
+
+        .control button {
+            padding: 10px 20px;
+            /* margin: 15px; */
+            font-size: 1.2rem;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            background: transparent;
+            border: 2px solid #16611c;
+            border-radius: 10px;
+            color: #16611c;
+            transition: all .3s ease;
+        }
+
+        .control_select button {
+            background: #16611c;
+            color: #fff;
+        }
+
+        .blockbox {
+            /* display: flex;
+            flex-flow: row; */
+            height: 100%;
+            /* height: calc(100% - 70px); */
+            position: absolute;
+            top: 0;
+            /* top: 70px; */
+            /* bottom: 0; */
+            left: 0;
+            right: 0;
+            width: 100%;
+            overflow: scroll;
+            scroll-behavior: smooth;
+        }
+
+        .block {
+            min-width: 245px;
+            text-align: center;
+            height: 100%;
+            position: relative;
+            /* margin-right: 10px; */
+            margin: 0 5px;
+        }
+
+        .block h2 {
+            color: #fff;
+            /* margin-top: 20px; */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 25px 20px 0 0;
+            font-size: 1.3rem;
+            font-weight: bold;
+            outline: none;
+            border: none;
+            background: transparent;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            color: #fff;
+            transition: all .3s ease;
+        }
+
+
+        .btn_small {
+            font-size: 1rem;
+            margin: 15px 10px 0 0;
+            padding: 6px 16px;
+        }
+
+        .select {
+            background: #1053b7;
+            color: #fff;
+            border-color: #1053b7;
+            /* background: #16611c;
+            color: #fff;
+            border-color: #16611c; */
+        }
+
+        .contentbox {
+            height: 80%;
+            /* height: 70%; */
+            /* height: 500px; */
+            display: flex;
+            flex-flow: column;
+            flex-grow: 1;
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .contentlist {
+            transition: all .4s ease;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+        }
+
+        .content {
+            padding: 15px 40px;
+            display: inline-block;
+            /* color: transparent; */
+            transition: all 0.3s ease;
+            position: relative;
+            color: rgba(255, 255, 255, 0.5);
+            transform-origin: 0 0;
+            /* transform: skewY(-17.1887341471deg); */
+            padding-bottom: 20px;
+            font-weight: lighter;
+            border-bottom: 6px solid rgba(255, 255, 255, 0.1);
+            font-weight: bold;
+            margin: 0 20px 20px 0;
+        }
+
+        .content .type {
+            color: lightseagreen; 
+            font-weight: bold;
+        }
+
+        .content_select {
+            opacity: 1;
+            background: #1053b7;
+            /* background: #16611c; */
+            color: #fff;
+            border-bottom: none;
+            border-radius: 20px;
+        }
+
+        .inner {
+            font-size: 1.2rem;
+        }
+
+        .controller {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            overflow: scroll;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            height: 120px;
+            /* background: rgb(146 239 154 / 50%); */
+            background: rgb(165 165 165 / 35%);
+            border: 5px solid #1053b7;
+            /* border: 5px solid #326b37; */
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all .3s ease;
+            transform-origin: 50% 0;
+            animation: controller_fade_in .3s linear forwards;
+            box-sizing: border-box;
+        }
+
+        .controller::-webkit-scrollbar {  
+            width:0 !important;   /* remove scrollbar space */
+            background: transparent;  /* optional: just make scrollbar invisible */
+        }
+
+
+        .controller_video {
+            height: auto;
+        }
+
+
+
+        @keyframes controller_fade_in {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hscroll {
+            display: inline-flex;
+            height: 100%;
+            text-align: center;
+            min-width: 100%;
+            justify-content: center;
+        }
+
+        .hscroll img {
+            display: block;
+            height: 80%;
+            transform: scale(0.8);
+        }
+
+        .hscroll .text {
+            color: white;
+            opacity: 0.5;
+            font-weight: bolder;
+        }
+
+        .controller_select {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .ppt_block {
+            height: 100%;
+            text-align: center;
+            transition: all .3s ease;
+        }
+
+        .box {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .range_box {
+            position: relative;
+            width: 100%;
+            color: #fff;
+        }
+
+        .range {
+            -webkit-appearance: none;
+            display: block;
+            margin: 15px auto 5px;
+            width: 90%;
+            height: 35px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.2);
+            outline: none;
+            cursor: pointer;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 35px;
+            width: 35px;
+            background: #1053b7;
+            border-radius: 5px;
+            /*外观设置为圆形*/
+            box-shadow: 0 .125em .125em #3b4547;
+            /*添加底部阴影*/
+        }
+
+        .range_left_time {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 5px;
+            pointer-events: none;
+        }
+
+        .range_right_time {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-right: 5px;
+            pointer-events: none;
+        }
+
+
+        .focus_box {
+            color: #fff;
+            margin-top: 10px;
+            display: inline-block;
+            margin-left: -15px;
+        }
+
+        .dis_click {
+            pointer-events: none;
+            color: #333;
+        }
+
+        .dis_click .type {
+            color: #20b2aa61;
+        }
+
+
+
+       
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <!-- <div class="control" :class="{control_select: shared.focus }">
+            <button @click="open_shade">{{shared.focus ? "关闭遮罩" : "开启遮罩"}}</button>
+        </div> -->
+        <div class="blockbox">
+            <div class="hscroll">
+                <div class="block" v-for="item in shared.items">
+                    <button @click="send_code(item.id, '')" class="btn"
+                        :class="{select: def['/selectId'].value[item.id] }">{{item.name}}</button> <br>
+                    <label class="focus_box" :for="item.id">
+                        聚焦
+                        <input @click="open_shade(this, item.id)" type="radio" name="focus"  :id="item.id">
+                    </label>
+
+
+                    <div class="contentbox">
+                        <div class="contentlist">
+                            <div class="content" v-for="ct in item.content"  v-if="ct.name != 'bg'"
+                                :class="{'dis_click': ct.bg, content_select: ct.name == def['/selectName'].value[item.id] && ct.select }"
+                                @click="send_code(item.id, ct.name)">
+                                <span class="inner">{{ct.name}}</span> <br>
+                                <span class="type" >{{ct.bg ? "bg - " + shared.keys[ct.type] : shared.keys[ct.type]}}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box" v-for="ct in item.content">
+                        <div class="controller"
+                            :class="{controller_select: shared.keys[ct.type] == '文档' && def['/selectName'].value[item.id] == ct.name}"
+                            v-if="shared.keys[ct.type] == '文档' && def['/selectName'].value[item.id] == ct.name">
+                            <div class="hscroll">
+                                <!-- v-lazy :src -->
+                                <div class="ppt_block" v-for="(c, index) in ct.content"
+                                    :style="{background: def['/player_slideId'].value[item.id] == index ? 'rgba(255, 255, 255, 0.5)' : 'transparent'}"
+                                    @click="send_ppt_control(item.id, index)">
+                                    <img v-lazy="shared.host + ct.path + c" alt="">
+                                    <div class="text">{{index + 1}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="controller controller_video"
+                            :class="{controller_select: shared.keys[ct.type] == 'video' && def['/selectName'].value[item.id] == ct.name}"
+                            v-if="shared.keys[ct.type] == 'video' && def['/selectName'].value[item.id] == ct.name">
+                            <button @click="send_video_control(item.id, 'play')" class="btn btn_small"
+                                :class="{select: !def['/player_play'].value[item.id]  }">{{!def['/player_play'].value[item.id] ? '播放' : '暂停'}}</button>
+                            <button @click="send_video_control(item.id, 'muted')" class="btn btn_small"
+                                :class="{select: def['/player_muted'].value[item.id] }">{{!def['/player_muted'].value[item.id] ? '静音' : '解除静音'}}</button>
+                            <button @click="send_video_control(item.id, 'loop')" class="btn btn_small"
+                                :class="{select: def['/player_loop'].value[item.id] }">{{!def['/player_loop'].value[item.id] ? '当前仅播放一次' : '当前循环播放'}}</button>
+                            <div class="range_box">
+                                <span class="range_left_time">0.00</span>
+                                <span class="range_right_time">{{ct.endTime}}</span>
+                                <input class="range" type="range" @touchmove="send_video_time($event, item.id)"
+                                    @mousemove="send_video_time($event, item.id)" :value="def['/current_time'].value[item.id]" max="1" min="0" step="0.01">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <script src="./ipad.js"></script>
+</body>
+
+</html>
