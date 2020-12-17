@@ -81,3 +81,11 @@
 | path            | files/../                          | ppt文件夹路径                   | ✅          |
 | content         | ['file1.png','file2.png', ... ]    | 字体定位[left, top]，默认[0, 0]  | ✅          |
 
+
+
+## 附录
+
+### 压缩视频
+```
+    ffmpeg -i video.mp4 -vcodec libx264 -crf 30 new/video.mp4
+```
