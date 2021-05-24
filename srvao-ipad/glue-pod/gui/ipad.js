@@ -40,7 +40,7 @@ sock.on("up-relay", (delta) => {
             if (delta.path == "/focus") {
                 shared.focus = delta.new_val
             }
-            if(delta.path=="/player_muted"){
+            if (delta.path == "/player_muted") {
                 console.log(delta.new_val);
             }
         }
@@ -75,7 +75,7 @@ function init(v) {
         methods: {
             // 开启遮罩
             open_shade(_this, ids) {
-                if(shared.focus == ids){
+                if (shared.focus == ids) {
                     document.getElementById(ids).checked = false;
                     shared.focus = ''
                 } else {
@@ -86,14 +86,14 @@ function init(v) {
                 this.send_socket_control("action", '/add_time')
             },
             // 发送 video 当前时间
-            send_video_time(e, ids){
+            send_video_time(e, ids) {
                 console.log(e, ids);
                 shared.def['/player_time'].value[ids] = e.target.value * 1;
                 this.send_socket_control("value_set", '/player_time', shared.def['/player_time'].value)
                 this.send_socket_control("action", '/add_time')
             },
             // 发送 ppt 页码
-            send_ppt_control(ids, page){
+            send_ppt_control(ids, page) {
                 shared.def['/player_slideId'].value[ids] = page
                 sock.emit("control", {
                     type: "value_set",
@@ -106,15 +106,15 @@ function init(v) {
                 })
             },
             // 发送 video 配置
-            send_video_control(ids, type, def = undefined){
-                switch(type){
+            send_video_control(ids, type, def = undefined) {
+                switch (type) {
                     case 'play':
                         shared.def['/player_play'].value[ids] = (def != '' ? def : '') || !shared.def['/player_play'].value[ids]
                         this.send_socket_control("value_set", '/player_play', shared.def['/player_play'].value)
                         break;
                     case 'muted':
-                        console.log( (def != undefined ? def : ''));
-                        shared.def['/player_muted'].value[ids] = def != undefined ? def :  !shared.def['/player_muted'].value[ids];
+                        console.log((def != undefined ? def : ''));
+                        shared.def['/player_muted'].value[ids] = def != undefined ? def : !shared.def['/player_muted'].value[ids];
                         console.log(def, shared.def['/player_muted'].value[ids])
                         this.send_socket_control("value_set", '/player_muted', shared.def['/player_muted'].value)
                         break;
@@ -128,20 +128,20 @@ function init(v) {
             // 发送选中屏 + 组件状态
             send_code(ids, names) {
                 // 屏
-                if(ids && !names){
+                if (ids && !names) {
                     shared.def['/selectId'].value[ids] = !shared.def['/selectId'].value[ids]
                     shared.def['/selectName'].value[ids] = null
 
-                    for(let key in shared.com[ids]){
+                    for (let key in shared.com[ids]) {
                         shared.com[ids][key].select = false;
                     }
                 }
-                if(ids && names){
+                if (ids && names) {
                     // 组件
                     shared.com[ids][names].select = !shared.com[ids][names].select;
 
-                    for(let key in shared.com[ids]){
-                        if(key != names) shared.com[ids][key].select = false;
+                    for (let key in shared.com[ids]) {
+                        if (key != names) shared.com[ids][key].select = false;
                     }
 
                     // 每次选择前，该列选项归零
@@ -152,7 +152,7 @@ function init(v) {
                     this.send_socket_control("value_set", '/player_time', shared.def['/player_time'].value)
                     this.send_ppt_control(ids, 0)
 
-                    if(shared.com[ids][names].select){
+                    if (shared.com[ids][names].select) {
                         shared.def['/selectId'].value[ids] = true;
                         shared.def['/selectName'].value[ids] = names
                     } else {
@@ -166,9 +166,16 @@ function init(v) {
                 this.send_socket_control("action", '/add_time')
             },
             // 发送 socket
-            send_socket_control(type, path, new_val){
+            send_socket_control(type, path, new_val) {
                 new_val && sock.emit("control", { type, path, new_val });
                 !new_val && sock.emit("control", { type, path });
+            }
+        },
+        mounted() {
+            for (let i = 0; i < shared.items.length; i++) {
+                if(shared.items[i].def){
+                    this.send_code(shared.items[i].id, shared.items[i].def)
+                }
             }
         }
     })
