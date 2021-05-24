@@ -66,6 +66,7 @@
     "zIndex": 2,
     "bg": "black",
     "opacity": 0,
-    "list": "overlayScreen.yaml"
+    "list": "overlayScreen.yaml",
+    "def": "test"
   }
 ]
