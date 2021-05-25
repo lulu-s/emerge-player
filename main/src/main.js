@@ -103,6 +103,13 @@ function init(items) {
         mounted(){
             ao.looperStart();
             // ao.looperShowFPS();
+            for(let i = 0; i < items.length; i ++){
+                if(items[i].def){
+                    console.log(items[i].id, items[i].def)
+                    state.selectId[items[i].id] = items[i].id;
+                    state.selectName[items[i].id] = items[i].def;
+                }
+            }
         }
     })
 }
